@@ -9,10 +9,12 @@
     "preview": "astro preview",
     "astro": "astro",
     "dev-download": "npx fetch-dev-to-articles reggi ./cache/dev.to",
-    "dev-markdown": "tsx ./src/lib/dev_json_to_md.ts",
+    "dev-markdown": "tsx ./src/lib/fetch_dev.ts",
     "dev-build": "npm run dev-download && npm run dev-markdown && npm run build",
+    "dev-run": "npm run dev-download && npm run dev-markdown && npm run dev",
     "update-cache": "npm uninstall astro-cache-embed && npm i astro-cache-embed",
-    "update-cache-run": "npm run update-cache && npm run dev"
+    "update-cache-run": "npm run update-cache && npm run dev",
+    "deploy": "sh ./upload.sh"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",

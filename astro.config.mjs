@@ -2,9 +2,6 @@ import { defineConfig } from 'astro/config';
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
-// import { viteStaticCopy } from 'vite-plugin-static-copy'
-
-import { ViteDevServer } from 'vite';
 
 export function pluginWatchNodeModules(modules) {
 	// Merge module into pipe separated string for RegExp() below.

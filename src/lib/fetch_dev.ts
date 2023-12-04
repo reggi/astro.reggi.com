@@ -3,7 +3,7 @@ import camelCase from 'camelcase';
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
-const inputDir = './dev-cache';
+const inputDir = './cache/dev.to';
 const outputDir = './src/content/dev';
 
 async function convertJsonToMarkdown() {
@@ -19,7 +19,7 @@ async function convertJsonToMarkdown() {
       const outputFilePath = path.join(outputDir, file.name.replace('.json', '.mdx'));
 
       await fs.writeFile(outputFilePath, content);
-      // console.log(`Markdown file created: ${outputFilePath}`);
+      console.log(`Markdown file created: ${outputFilePath}`);
     }
   }
 }
