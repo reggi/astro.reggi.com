@@ -1,0 +1,15 @@
+---
+import type { ArtworkProps, StatementProps } from '@/lib/brushwork_types';
+import Artwork from '@/components/Artwork.astro';
+import Statement from '@/components/Statement.astro';
+import Layout from '@/layouts/LayoutBrushwork.astro';
+
+export type Props = StatementProps & ArtworkProps & { title: string };
+const props = Astro.props
+---
+
+<Layout title={props.title}>
+  <Artwork {...props}>
+    <Statement {...props}/>
+  </Artwork>
+</Layout>

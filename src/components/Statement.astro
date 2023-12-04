@@ -1,0 +1,43 @@
+---
+import type { StatementProps } from '@/lib/brushwork_types';
+import Link from '@/components/Link.astro';
+import LinkList from '@/components/LinkList.astro';
+
+const prefix = `/brushwork`
+const home = { href: `${prefix}/`, text: "All / Latest" }
+const start = { href: `${prefix}/2023/february/10`, text: "Feb 10<sup>th</sup>" }
+const end = { href: `${prefix}/2023/august/11`, text: "Aug 11<sup>th</sup>" }
+const post = { href: "https://reggi.substack.com/p/my-daily-art-practice", text: "process" }
+const name = { href: "https://reggi.com", text: "Thomas Reggi" }
+const otherArt = { href: "https://art.reggi.com", text: "other works" }
+const learnMore = { href: "https://reggi.com", text: "reggi.com" }
+
+export type Props = StatementProps
+const { listOfMonths, listOfVolumes } = Astro.props
+---
+
+<div class='flex-col'>
+  <p class="mb-5">
+    On <Link {...start}/>, I started a brushwork project where I create a new piece of work every day.
+    On <Link {...end}/>, I stopped.
+    I am inspired by the act of creation, and I believe that putting ink to paper every day is therapeutic and meditative.
+    To me, it's important not to overthink it; I just do the exercise, as it is all part of the <Link {...post}/>.
+    <span class='whitespace-nowrap'>&mdash; <Link {...name}/></span>
+  </p>
+  <p class="mb-5">
+    Checkout some of my <Link {...otherArt}/>.
+  </p>
+  <p class="mb-5">
+    Learn more about me at <Link {...learnMore}/>.
+  </p>
+  <div class="hidden md:block ml-3 mb-5">
+    <LinkList links={[home]}/>
+    {listOfMonths && <LinkList links={listOfMonths}/>}
+    {listOfVolumes && <LinkList links={listOfVolumes}/>}
+  </div>
+  <div class="md:hidden flex text-center mb-5">
+    <LinkList links={[home]} flex/>
+    {listOfMonths && <LinkList links={listOfMonths} flex/>}
+    {listOfVolumes && <LinkList links={listOfVolumes} flex/>}
+  </div>
+</div>

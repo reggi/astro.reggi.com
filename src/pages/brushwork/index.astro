@@ -1,0 +1,6 @@
+---
+import { getLatestFiles } from '@/lib/brushwork';
+import Brushwork from '@/components/Brushwork.astro';
+const response = await getLatestFiles()
+---
+<Brushwork {...response} title={`Thomas Reggi's Brushwork`}/>@/lib/brushwork

@@ -1,0 +1,11 @@
+---
+export type Props = {
+  href: string;
+  text?: string;
+  style?: astroHTML.JSX.DefinedIntrinsicElements['a']['style'];
+}
+
+const { href, text, style } = Astro.props
+---
+
+<a class="font-medium text-blue-600 dark:text-blue-500 hover:underline" href={href} style={style} set:html={text}><slot></a>

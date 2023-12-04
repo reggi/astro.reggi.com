@@ -1,0 +1,102 @@
+/* src/global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-[#fcf2d7];
+  @apply dark:bg-[#232024];
+  @apply dark:text-gray-200;
+  @apply m-auto;
+  @apply max-w-[740px];
+  @apply md:p-10;
+  @apply md:pt-20;
+  @apply pt-10;
+  @apply px-5;
+  @apply text-gray-800;
+  @apply text-lg;
+}
+
+article >,
+main >,
+header > { 
+  h1, h2, h3, p, pre, ul, ol, img, hr, blockquote, iframe, header, table {
+    @apply mb-5
+  }
+  img {
+    @apply mx-auto
+  }
+  blockquote {
+    @apply border-l-4 dark:border-white border-gray-800 pl-4 bg-[#e8dcbc] dark:bg-[#161217] py-5
+  }
+  
+  table {
+    @apply border-collapse table-fixed w-full border border-slate-400 dark:border-slate-500 bg-[#e8dcbc] dark:bg-[#161217] text-sm;
+    thead {
+      @apply bg-[#e8dcbc] dark:bg-[#161217];
+    }
+    th {
+      @apply w-1/2 border border-slate-300 dark:bg-[#161217] font-semibold p-4 text-left;
+    }
+    td {
+      @apply border border-slate-300 p-4;
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-semibold;
+}
+
+h1 {
+  @apply text-3xl;
+}
+
+h2 {
+  @apply text-2xl;
+}
+
+h3, h4, h5, h6 {
+  @apply text-xl;
+}
+
+/* style ``` code blocks */
+pre.astro-code {
+  @apply p-5
+}
+
+/* style `blocks` of code inline */
+:not(pre) > code {
+  @apply px-2 py-1 text-sm font-mono rounded whitespace-nowrap;
+  @apply bg-gray-600 text-slate-100;
+  @apply dark:bg-gray-200 dark:text-slate-700;
+}
+
+a {
+  @apply dark:text-[pink] text-[#1b5eb5];
+}
+
+a:hover {
+  @apply dark:text-[#ff69b4] text-[#0569eb];
+}
+
+ul, ol {
+  @apply list-disc ml-4;
+}
+
+ol {
+  @apply list-decimal;
+}
+
+.astro-cache-embed.micro-blog,
+.astro-cache-embed.card:not(.astro-cache-embed.micro-blog .astro-cache-embed.card) {
+  @apply mb-5 bg-white text-slate-700 border-none;
+
+  a {
+    @apply dark:text-[#1b5eb5];
+  }
+  
+  a:hover {
+    @apply dark:text-[#0569eb];
+  } 
+}

@@ -1,0 +1,36 @@
+{
+  "name": "astro-reggi-com",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "dev-download": "npx fetch-dev-to-articles reggi ./cache/dev.to",
+    "dev-markdown": "tsx ./src/lib/dev_json_to_md.ts",
+    "dev-build": "npm run dev-download && npm run dev-markdown && npm run build",
+    "update-cache": "npm uninstall astro-cache-embed && npm i astro-cache-embed",
+    "update-cache-run": "npm run update-cache && npm run dev"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.3.1",
+    "@astrojs/mdx": "^1.1.5",
+    "@astrojs/react": "^3.0.4",
+    "@astrojs/tailwind": "^5.0.2",
+    "@google-cloud/storage": "^7.6.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "astro": "^3.5.4",
+    "astro-cache-embed": "^6.1.0",
+    "camelcase": "^8.0.0",
+    "chalk": "^5.3.0",
+    "postcss-nested": "^6.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2",
+    "yaml": "^2.3.4"
+  }
+}

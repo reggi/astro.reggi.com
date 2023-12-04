@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@/layouts/Layout.astro';
+import { Embed, cacheFetch } from 'astro-cache-embed';
+const projects = await Promise.all((await getCollection('art')).map(async project => {
+  return {
+    ...project,
+    data: {
+      ...project.data,
+      img: project.data.img && (await cacheFetch(project.data.img)).src,
+      video: project.data.video && (await cacheFetch(project.data.video)).src,
+    }
+  }
+}))
+---
+<Layout title="Thomas Reggi's Artwork">
+  <header>
+    <h1>Artwork</h1>
+  </header>
+  <p>
+    Hi, I'm Thomas 👋. I'm a software engineer and artist based in Astoria,
+    Queens. You can learn more about me at <a href="https://reggi.com/"
+      >reggi.com</a
+    >. This page showcases a collection of my works in various mediums.
+  </p>
+  <div class="pb-10">
+    {
+      projects.map((piece) => {
+        return (
+          <div class="pb-10">
+            <div class="flex flex-row">
+              <div class="mr-3 w-2/5">
+                {piece.data.video && <video autoplay muted loop src={piece.data.video} />}
+                {piece.data.img && (
+                  <Embed
+                    src={piece.data.img}
+                    alt={piece.data.description}
+                  />
+                )}
+              </div>
+              <div class="w-3/5">
+                <h2>{piece.data.title}</h2>
+                <p class="pb-6">
+                  {piece.data.description}
+                  {piece.data.rarible && (
+                    <span>This piece is an NFT available on <a href={piece.data.rarible}>Rarible</a>.</span>
+                  )}
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</Layout>

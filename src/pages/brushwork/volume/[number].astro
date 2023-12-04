@@ -1,0 +1,8 @@
+---
+import { staticVolume, getFilesByVolume } from '@/lib/brushwork';
+import Brushwork from '@/components/Brushwork.astro';
+export const getStaticPaths = staticVolume
+const volume = Astro.props.volume
+const response = await getFilesByVolume(volume)
+---
+<Brushwork {...response} title={`Brushwork for volume ${volume}`}/>../../../projects/brushwork/library../../../projects/brushwork/library/brushwork@/lib/brushwork

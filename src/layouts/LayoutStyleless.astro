@@ -1,0 +1,48 @@
+---
+export interface Props {
+	title: string;
+  canonical?: string;
+  dark?: boolean;
+  footer?: boolean;
+  class?: string;
+  hideDarkMode?: boolean,
+  frontmatter?: any
+}
+
+import 'astro-cache-embed/db'
+import DarkMode from '@/components/DarkMode.astro'
+
+const { frontmatter, title, canonical, footer, hideDarkMode, class: className } = { footer: true, ...Astro.props }
+
+const links = [
+  { href: '/articles', text: 'Articles' },
+  { href: '/', text: 'Home' },
+  { href: '/brushwork', text: 'Brushwork' },
+  { href: '/resume', text: 'Resume' },
+  { href: '/art', text: 'Artwork' }
+]
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="thomas reggi" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/gif" href="/favicon.gif" />
+    <meta name="generator" content={Astro.generator} />
+		<title>{title || frontmatter?.title}</title>
+    { canonical && <link rel="canonical" href={canonical} /> }
+	</head>
+	<body>
+    {hideDarkMode ? undefined : <DarkMode/> }
+    <main class={className}>
+		  <slot />
+    </main>
+    {footer && <footer class="text-center mt-20 mb-10">
+      {links.map((link, index) => ( <>
+        <a href={link.href}>{link.text}</a>
+        {index < links.length - 1 && ' | '}
+      </>))}
+    </footer>}
+	</body>
+</html>

@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { absoluteSlug, formatBlogPostDate, devCollectionPosts } from '@/lib/dev';
+import { Embed } from 'astro-cache-embed';
+export const getStaticPaths = devCollectionPosts
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+<Layout title={entry.data.title} canonical={absoluteSlug(entry)}>
+  <header>
+    <h1>{entry.data.title}</h1>
+    <div><a href="/">About</a> / <a href="/articles">Tech Articles</a> </div>
+    <div>{formatBlogPostDate(entry.data.publishedAt)} (<a href={entry.data.devUrl}>Syndicated From dev.to</a>)</div>
+  </header>
+  
+  <hr class="border-gray-300 dark:border-gray-700"/>
+
+  { entry.data.coverImage && <Embed src={entry.data.coverImage} class="w-4/5 mx-auto" alt="Cover Image"/> }
+
+  <article>
+    <Content />
+  </article>
+</Layout>

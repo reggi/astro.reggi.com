@@ -1,0 +1,17 @@
+---
+import type { KeyedLinksArray } from '@/lib/brushwork_types';
+import Link from '@/components/Link.astro';
+
+export type Props = {
+  links: KeyedLinksArray
+  flex?: boolean
+}
+
+const { links, flex } = Astro.props;
+---
+
+<ul class={`${flex ? 'flex-1' : ''} mb-5`}>
+  {links.map(link => (
+    <li><Link {...link}/></li>
+  ))}
+</ul>

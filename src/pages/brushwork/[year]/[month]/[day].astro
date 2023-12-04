@@ -1,0 +1,10 @@
+---
+import { staticDay, getFilesByMonth } from '@/lib/brushwork';
+import Brushwork from '@/components/Brushwork.astro';
+
+export const getStaticPaths = staticDay
+
+const { year, month, day } = Astro.props
+const response = await getFilesByMonth(month, year, day)
+---
+<Brushwork {...response} title={`Brushwork for ${month} ${day} ${year}`}/>@/lib/brushwork
