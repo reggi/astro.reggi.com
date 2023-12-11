@@ -3,29 +3,36 @@ import type { ArtworkProps } from '@/lib/brushwork_types';
 export type Props = ArtworkProps
 const { files } = Astro.props
 ---
-<div class='md:max-w-screen-xl p-5 md:p-10 mx-auto'>
-  <div class='grid grid-cols-12 gap-3'>
-    <div class='col-span-12 md:col-span-8'>
-      <div class="md:hidden">
-        <slot/>
-      </div>
-      {files.map((file, index) => {
-        return (
-          <div class="pb-8">
-            <h3 id={file.date} class="pb-2">
-              <a class="font-medium hover:underline" href={file.href}>{file.text}</a>
-            </h3>
+
+<script>
+  import '@/webcomponents/fullscreen-media'
+</script>
+
+<div class='grid grid-cols-12 gap-5'>
+  <div class='col-span-12 md:col-span-8'>
+    <div class="md:hidden">
+      <slot/>
+    </div>
+    {files.map((file, index) => {
+      return (
+        <div class="pb-8">
+          <h3 id={file.date} class="pb-2">
+            <a class="font-medium hover:underline" href={file.href}>{file.text}</a>
+          </h3>
+
+          <fullscreen-media>
             <img src={file.source} alt={file.alt} width="2000" height="1500" loading={(() => {
               if (index <= 3) return "eager"
               return 'lazy'
             })()}/>
-          </div>
-        )
-      })}
-      <p>Copyright &copy; {(new Date().getFullYear())} Thomas Reggi</p>
-    </div>
-    <div class="pt-7 col-span-4 min-w-sm hidden md:flex">
-      <slot/>
-    </div>
+          </fullscreen-media>
+
+        </div>
+      )
+    })}
+    <p>Copyright &copy; {(new Date().getFullYear())} Thomas Reggi</p>
+  </div>
+  <div class="pt-7 col-span-4 min-w-sm hidden md:flex">
+    <slot/>
   </div>
 </div>

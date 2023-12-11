@@ -45,10 +45,26 @@ const jobs = defineCollection({
     "description": z.string(),
     "img": z.union([z.undefined(), z.string()]),
     "rarible": z.union([z.undefined(), z.string()]),
-    "video": z.union([z.undefined(), z.string()])
+    "video": z.union([z.undefined(), z.string()]),
+    "href": z.union([z.undefined(), z.string()]),
   }),
 })
 
+const video = defineCollection({
+  type: 'data',
+  schema: z.object({
+    "title": z.string(),
+    "poster": z.string(),
+    "src": z.string()
+  }),
+})
+
+const notes = defineCollection({
+  type: 'content',
+  schema: z.object({}),
+})
+
 export const collections = {
-  dev, jobs, art
+  dev, jobs, art, video, notes
 };
+

@@ -1,5 +1,5 @@
 ---
-
+import Heading from '@/components/Heading.astro';
 import Layout from '@/layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 const allJobs = (await getCollection('jobs')).reverse();
@@ -12,57 +12,57 @@ const allJobs = (await getCollection('jobs')).reverse();
 
   <p>I'm an Astoria-based software engineer and <a href="/brushwork">artist</a>. I put together a night-time monthly <a href="https://www.meetup.com/astoria-tech-meetup/events/297194678">tech-meetup in Astoria</a>. My work intertwines technology with artistic expression, and outside of it, I delve into yoga, meditation, and spirituality, particularly Buddhism. Driven by socialist values, and I'm exploring worker-owned cooperatives with my projects <a href="https://memboko.com/">Memboko</a> and <a href="https://forum.ladybugs.work/">ladybugs.work</a>, aspiring to make a meaningful impact through my engineering skills.</p>
 
-  <h2>Links</h2>
+  <Heading as="h2">Links</Heading>
   <ul>
-    <li>I share <strong>images</strong> on <a href="https://reggi.tumblr.com/" target="__blank">tumblr</a> and collect visual inspiration 🩻</li>
-    <li>I post on <a rel="me" href="https://indieweb.social/@thomasreggi" target="__blank">mastodon</a> and documenting small <strong>thoughts</strong> 💬</li>
-    <li>I write <a href="/articles">tech articles</a> on <a href="https://dev.to/reggi" target="__blank">dev.to</a> 🧑‍💻</li>
-    <li>I share <strong>coding projects</strong> on <a href="https://github.com/reggi" target="__blank">github</a> 🔧</li>
-    <li>Occasionally I'll make a <a href="https://www.youtube.com/c/thomasreggi" target="__blank">youtube</a> <strong>video</strong> 🎥</li>
-    <li>My <strong>career</strong> history is up on <a href="https://www.linkedin.com/in/thomasreggi/" target="__blank">linkedin</a> or <a href="/resume">resume</a> 🧑‍🍳</li>
-    <li>I used to post a lot of <strong>coding questions</strong> on <a href="https://stackoverflow.com/users/340688/thomasreggi" target="__blank">stackoverflow</a> 🙋</li>
-    <li>I have a <a href="https://reggi.substack.com/" target="__blank">substack</a> where I <strong>write</strong> about art and culture 🎨</li>
+    <li>🩻 I share <strong>images</strong> on <a href="https://reggi.tumblr.com/" target="__blank">tumblr</a> and collect visual inspiration</li>
+    <li>💬 I post on <a rel="me" href="https://indieweb.social/@thomasreggi" target="__blank">mastodon</a> and documenting small <strong>thoughts</strong></li>
+    <li>🧑‍💻 I write <a href="/articles">tech articles</a> on <a href="https://dev.to/reggi" target="__blank">dev.to</a></li>
+    <li>🔧 I share <strong>coding projects</strong> on <a href="https://github.com/reggi" target="__blank">github</a></li>
+    <li>🎥 Occasionally I'll make a <a href="https://www.youtube.com/c/thomasreggi" target="__blank">youtube</a> <strong>video</strong></li>
+    <li>🧑‍🍳 My <strong>career</strong> history is up on <a href="https://www.linkedin.com/in/thomasreggi/" target="__blank">linkedin</a> or <a href="/resume">resume</a></li>
+    <li>🙋 I used to post a lot of <strong>coding questions</strong> on <a href="https://stackoverflow.com/users/340688/thomasreggi" target="__blank">stackoverflow</a></li>
+    <li>🎨 I have a <a href="https://reggi.substack.com/" target="__blank">substack</a> where I <strong>write</strong> about art and culture</li>
   </ul>
 
-  <h2>Current</h2>
+  <Heading as="h2">Current</Heading>
   <ul>
-    <li>Watching Fleabag 🍆 and Invincible 🦸</li>
-    <li>Listening to <a href="https://www.youtube.com/watch?v=q3lX2p_Uy9I" target="__blank">Back on 74</a> on 🔁 and <a href="https://www.youtube.com/watch?v=3x2xtPV9oxQ" target="__blank">Record Player</a></a> 🎧</li>
-    <li>I recently watched <a href="https://www.google.com/search?q=the+Mask&rlz=1C5CHFA_enUS992US992&oq=the+Mask&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg7MgYIAhBFGDsyBggDEEUYQDIGCAQQRRhBMgYIBRBFGEEyBggGEEUYQTIGCAcQRRg90gEHMjM1ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8" target="__blank">The Mask</a> on <a href="https://indieweb.social/@thomasreggi/111338296488723872" target="__blank">VHS</a> 🎭</li>
+    <li>Watching 🍆 Fleabag  and 🦸 Invincible </li>
+    <li>🎧 Listening to <a href="https://www.youtube.com/watch?v=q3lX2p_Uy9I" target="__blank">Back on 74</a> on 🔁 and <a href="https://www.youtube.com/watch?v=3x2xtPV9oxQ" target="__blank">Record Player</a></a></li>
+    <li>🎭 I recently watched <a href="https://www.google.com/search?q=the+Mask&rlz=1C5CHFA_enUS992US992&oq=the+Mask&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg7MgYIAhBFGDsyBggDEEUYQDIGCAQQRRhBMgYIBRBFGEEyBggGEEUYQTIGCAcQRRg90gEHMjM1ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8" target="__blank">The Mask</a> on <a href="https://indieweb.social/@thomasreggi/111338296488723872" target="__blank">VHS</a></li>
   </ul>
 
-  <h2>About Me</h2>
+  <Heading as="h2">About Me</Heading>
   <ul>
-    <li>I'm a native New Yorker 🗽</li>
-    <li>I grew up in Borough Park, Bay Ridge, &amp; Staten Island 🥯</li>
-    <li>I'm 34 Years old 💪</li>
-    <li>In a relationship with my partner of 6 years 🫶</li>
-    <li>Spent a lot ot time in Bed Stuy and Gowanus 📻🐠</li>
-    <li>I've been coding professionally for over 10 years 🧑‍💻</li>
-    <li>Exploring coffee shops in Astoria, Greenpoint, and Bushwick ☕️</li>
-    <li>I love doing yoga ❤️🧘</li>
-    <li>I'm non-binary / gender non-conforming 🏳️‍🌈 🤍💛💜🖤 🏳️‍⚧️</li>
+    <li>🗽 I'm a native New Yorker</li>
+    <li>🥯 I grew up in Borough Park, Bay Ridge, &amp; Staten Island</li>
+    <li>💪 I'm 34 Years old</li>
+    <li>🫶 In a relationship with my partner of 6 years </li>
+    <li>📻🐠 Spent a lot ot time in Bed Stuy and Gowanus</li>
+    <li>🧑‍💻 I've been coding professionally for over 10 years</li>
+    <li>☕️ Exploring coffee shops in Astoria, Greenpoint, and Bushwick</li>
+    <li>🧘 I love doing yoga</li>
+    <li>🏳️‍🌈 🤍💛💜🖤 🏳️‍⚧️ I'm non-binary / gender non-conforming</li>
   </ul>
 
-  <h2>Interests</h2>
+  <Heading as="h2">Interests</Heading>
   <p>I am actively seeking to find a community, meet new people, make friends, learn, and grow in 2023. I'm making more of an effort to participate in potlucks 🍲, meet people in person 🤝, grab coffee ☕️, attend events and meetups 📆, and meet people on apps like Bumble 🐝.</p>
   <ul>
-    <li>Spiritual or Meditative Practice 🧘</li>
-    <li>Hosting Potlucks 🍲</li>
-    <li>Visiting Art &amp; Gallery spaces 🖼</li>
-    <li>Model Making, “Kitbashing”, Gunpla 🚂</li>
-    <li>Collectables &amp; Toys 🤖</li>
-    <li>Visiting Thrift Stores 👚🛍</li>
-    <li>Arts &amp; Crafts 🎨</li>
-    <li>Coding / Electronics? 🧑‍🏭 🧑‍💻</li>
-    <li>Sewing &amp; Repairs 🧵🪡</li>
-    <li>Doing Yoga ❤️🧘</li>
-    <li>Bike Riding 🚴</li>
-    <li>Board Games 🎲</li>
-    <li>Magic The Gathering Night 🃏</li>
+    <li>🧘 Spiritual or Meditative Practice</li>
+    <li>🍲 Hosting Potlucks</li>
+    <li>🖼 Visiting Art &amp; Gallery spaces</li>
+    <li>🚂 Model Making, “Kitbashing”, Gunpla</li>
+    <li>🤖 Collectables &amp; Toys</li>
+    <li>🛍 Visiting Thrift Stores</li>
+    <li>🎨 Arts &amp; Crafts</li>
+    <li>🧑‍🏭 Coding / Electronics?</li>
+    <li>🧵 Sewing &amp; Repairs</li>
+    <li>🧘 Doing Yoga</li>
+    <li>🚴 Bike Riding</li>
+    <li>🎲 Board Games</li>
+    <li>🃏 Magic The Gathering Night</li>
   </ul>
 
-  <h2>Career Info</h2>
+  <Heading as="h2">Career Info</Heading>
   <p>
     I'm passionate about web standards, JavaScript, web components, Node.js, and Deno.
     I experiment a lot with newer web technologies and frameworks.
@@ -72,17 +72,17 @@ const allJobs = (await getCollection('jobs')).reverse();
   </p>
 
   <ul>
-    <li>I am a <strong>Full-Stack 🥞 JavaScript / TypeScript Developer</strong></li>
-    <li>I am looking for a <strong>Senior / Staff</strong> role 👷</li>
-    <li>My top priority in a new role is a <strong>good work-life balance 👍🏋️‍♀️🍻⚖️</strong></li>
-    <li>I have experience using <strong>TypeScript</strong> 🧑‍💻 (6 years development experience)</li>
+    <li>🥞 I am a <strong>Full-Stack JavaScript / TypeScript Developer</strong></li>
+    <li>👷 I am looking for a <strong>Senior / Staff</strong> role</li>
+    <li>👍🏋️‍♀️🍻⚖️ My top priority in a new role is a <strong>good work-life balance</strong></li>
+    <li>🧑‍💻 I have experience using <strong>TypeScript</strong> (6 years development experience)</li>
     <li>My specialty is <strong>Node.js backend API</strong>'s with 11 years experience</li>
-    <li>I have 8 years experience with <strong>React</strong> ⚛️ and <em>some</em> <strong>React Native 📲</strong></li>
-    <li>I am open to in-person roles in <strong>NYC</strong> 🗽</li>
-    <li>Ready and <strong>willing to go back</strong> to the office 🏢</li>
-    <li>I am open to <strong>fully remote roles 🎮</strong></li>
+    <li>📲 I have 8 years experience with <strong>React</strong> ⚛️ and <em>some</em> <strong>React Native</strong></li>
+    <li>🗽 I am open to in-person roles in <strong>NYC</strong></li>
+    <li>🏢 Ready and <strong>willing to go back</strong> to the office</li>
+    <li>🎮 I am open to <strong>fully remote roles</strong></li>
     <li>I'm looking for <strong>medium to large companies</strong></li>
-    <li>I am looking to take on a <strong>new role immediately 📅</strong></li>
+    <li>📅 I am looking to take on a <strong>new role immediately</strong></li>
     <li>I'm open to <strong>full time</strong> 🌝 work as well as <strong>part-time 🌛 contract</strong></li>
     <li>I am a <strong>US Citizen</strong> and <strong>do not require visa</strong> sponsorship</li>
     <li>I've started my Job Search at the beginning of <strong>January 2023</strong></li>

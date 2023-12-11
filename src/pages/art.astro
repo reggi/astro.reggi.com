@@ -2,26 +2,31 @@
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
 import { Embed, cacheFetch } from 'astro-cache-embed';
-const projects = await Promise.all((await getCollection('art')).map(async project => {
+
+const art = await getCollection('art')
+
+const projects = await Promise.all(art.reverse().map(async project => {
   return {
     ...project,
     data: {
       ...project.data,
-      img: project.data.img && (await cacheFetch(project.data.img)).src,
-      video: project.data.video && (await cacheFetch(project.data.video)).src,
+      img: project.data.img && project.data.img?.startsWith('http') ? (await cacheFetch(project.data.img)).src : project.data.img,
+      video: project.data.video && project.data.img?.startsWith('http') ? (await cacheFetch(project.data.video)).src : project.data.video,
     }
   }
 }))
 ---
-<Layout title="Thomas Reggi's Artwork">
+
+<script>
+  import '@/webcomponents/fullscreen-media'
+</script>
+
+<Layout title="Artwork">
   <header>
     <h1>Artwork</h1>
   </header>
   <p>
-    Hi, I'm Thomas 👋. I'm a software engineer and artist based in Astoria,
-    Queens. You can learn more about me at <a href="https://reggi.com/"
-      >reggi.com</a
-    >. This page showcases a collection of my works in various mediums.
+    This page showcases a collection of my works in various mediums.
   </p>
   <div class="pb-10">
     {
@@ -30,12 +35,23 @@ const projects = await Promise.all((await getCollection('art')).map(async projec
           <div class="pb-10">
             <div class="flex flex-row">
               <div class="mr-3 w-2/5">
-                {piece.data.video && <video autoplay muted loop src={piece.data.video} />}
+                {piece.data.video && <fullscreen-media><video autoplay muted loop src={piece.data.video} /></fullscreen-media>}
                 {piece.data.img && (
-                  <Embed
-                    src={piece.data.img}
-                    alt={piece.data.description}
-                  />
+                  piece.data.href ? (
+                    <a href={piece.data.href}>
+                      <Embed
+                        src={piece.data.img}
+                        alt={piece.data.description}
+                      />
+                    </a>
+                  ) : (
+                    <fullscreen-media>
+                      <Embed
+                        src={piece.data.img}
+                        alt={piece.data.description}
+                      />
+                    </fullscreen-media  >
+                  )
                 )}
               </div>
               <div class="w-3/5">

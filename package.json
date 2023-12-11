@@ -10,9 +10,12 @@
     "astro": "astro",
     "dev-download": "npx fetch-dev-to-articles reggi ./cache/dev.to",
     "dev-markdown": "tsx ./src/lib/fetch_dev.ts",
-    "dev-build": "npm run dev-download && npm run dev-markdown && npm run build",
-    "dev-run": "npm run dev-download && npm run dev-markdown && npm run dev",
+    "dev-swap": "npx tsx ./src/scripts/dev-swap.ts",
+    "dev-process": "npm run dev-download && npm run dev-markdown && npm run dev-swap",
+    "dev-build": "npm run dev-process && npm run build",
+    "dev-run": "npm run dev-process && npm run dev",
     "update-cache": "npm uninstall astro-cache-embed && npm i astro-cache-embed",
+    "update-cache-build": "npm run update-cache && npm run build",
     "update-cache-run": "npm run update-cache && npm run dev",
     "deploy": "sh ./upload.sh"
   },
@@ -21,18 +24,24 @@
     "@astrojs/mdx": "^1.1.5",
     "@astrojs/react": "^3.0.4",
     "@astrojs/tailwind": "^5.0.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@google-cloud/storage": "^7.6.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "astro": "^3.5.4",
     "astro-cache-embed": "^6.1.0",
+    "astro-icon": "^0.8.2",
     "camelcase": "^8.0.0",
     "chalk": "^5.3.0",
+    "jstat": "^1.9.6",
     "postcss-nested": "^6.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2",
     "yaml": "^2.3.4"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

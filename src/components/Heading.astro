@@ -1,0 +1,41 @@
+---
+const { as: As = 'h1' } = Astro.props;
+const text = await Astro.slots.render('default')
+
+function toKebabCase(str: string): string {
+    return str
+        .match(/[A-Z]?[a-z]+|[0-9]+/g)!
+        .map(word => word.toLowerCase())
+        .join('-');
+}
+
+const id = toKebabCase(text)
+---
+
+<As class="heading items-center" id={id}>
+  <a class="flex" href={`#${id}`}>
+    <span class="icon w-0 overflow-hidden">🔗</span>
+    <span>{text}</span>
+  </a>
+</As>
+
+<script>
+  
+  document.querySelectorAll('.heading').forEach(heading => {
+    const icon = heading.querySelector('.icon')
+
+    heading.addEventListener('mouseover', () => {
+      icon.classList.add('hovered');
+    });
+    heading.addEventListener('mouseout', () => {
+      icon.classList.remove('hovered');
+    });
+  });
+</script>
+
+<style>
+  .hovered {
+    width: 40px;
+    transition: transform 0.3s ease;
+  }
+</style>

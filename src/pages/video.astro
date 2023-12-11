@@ -1,0 +1,41 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+const projects = await getCollection("video");
+
+const summary = await getEntry('notes', 'video')
+const { Content } = await summary.render();
+---
+
+<script>
+  import "@/webcomponents/fullscreen-media";
+</script>
+
+<Layout title="Artwork">
+  <header>
+    <h1>Video Art</h1>
+  </header>
+  
+  <Content/>
+
+  <div class="pb-10">
+    {
+      projects.map((piece) => (
+        <div class="pb-10">
+          <h2 class="pb-5">{piece.data.title}</h2>
+          <video
+            class="w-full h-auto rounded-xl"
+            controls=""
+            poster={piece.data.poster}
+            src={piece.data.src}
+          >
+          <script is:inline>
+            var video = document.currentScript.parentElement;
+            video.volume = 0.1;
+          </script>
+          </video>
+        </div>
+      ))
+    }
+  </div>
+</Layout>

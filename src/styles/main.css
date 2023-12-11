@@ -4,11 +4,9 @@
 @tailwind utilities;
 
 body {
-  @apply bg-[#fcf2d7];
+  @apply bg-[#fcfaf2];
   @apply dark:bg-[#232024];
   @apply dark:text-gray-200;
-  @apply m-auto;
-  @apply max-w-[740px];
   @apply md:p-10;
   @apply md:pt-20;
   @apply pt-10;
@@ -72,11 +70,11 @@ pre.astro-code {
   @apply dark:bg-gray-200 dark:text-slate-700;
 }
 
-a {
+a:not(.nostyle) {
   @apply dark:text-[pink] text-[#1b5eb5];
 }
 
-a:hover {
+a:not(.nostyle):hover {
   @apply dark:text-[#ff69b4] text-[#0569eb];
 }
 

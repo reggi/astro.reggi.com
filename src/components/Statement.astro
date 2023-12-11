@@ -30,7 +30,7 @@ const { listOfMonths, listOfVolumes } = Astro.props
   <p class="mb-5">
     Learn more about me at <Link {...learnMore}/>.
   </p>
-  <div class="hidden md:block ml-3 mb-5">
+  <div class="hidden md:block mb-5">
     <LinkList links={[home]}/>
     {listOfMonths && <LinkList links={listOfMonths}/>}
     {listOfVolumes && <LinkList links={listOfVolumes}/>}

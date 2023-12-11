@@ -10,7 +10,7 @@ export type Props = {
 const { links, flex } = Astro.props;
 ---
 
-<ul class={`${flex ? 'flex-1' : ''} mb-5`}>
+<ul class={`list-none m-0 ${flex ? 'flex-1' : ''} mb-5`}>
   {links.map(link => (
     <li><Link {...link}/></li>
   ))}

@@ -1,0 +1,34 @@
+---
+import Icon from 'astro-icon'
+
+const { links } = Astro.props
+
+type Props = {
+  links: {
+    href: string
+    text: string
+  }[]
+}
+
+---
+<Icon id="hamburgerMenu" name="hamburger-menu-bold" class={`w-[40px] cursor-pointer`}/>
+
+<div id="modal" class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 p-[20px] md:p-[40px] xl:p-[100px]">
+    <div class="bg-white p-6 rounded-lg shadow-lg relative">
+        <div class="space-y-4">
+          {links.map((link) => ( <>
+            <a href={link.href} class="nostyle rounded bg-[#232024] block px-5 py-5 text-center text-white">{link.text}</a>
+          </>))}
+        </div>
+    </div>
+</div>
+
+<script>
+  document.getElementById('hamburgerMenu')!.addEventListener('click', () => {
+      document.getElementById('modal')!.classList.remove('hidden');
+  });
+
+  document.getElementById('modal')!.addEventListener('click', () => {
+      document.getElementById('modal')!.classList.add('hidden');
+  });
+</script>

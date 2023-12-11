@@ -1,0 +1,131 @@
+---
+import Icon from 'astro-icon'
+import { getCollection } from 'astro:content';
+
+type Props = {
+  expand?: boolean
+}
+
+const { expand } = Astro.props
+
+const allJobs = (await getCollection('jobs')).reverse();
+
+const jobs = await Promise.all(allJobs.map(async (job) => {
+  const { Content } = await job.render()
+  return { ...job.data, tags: (job.data.tags || []), Content }
+}))
+
+const name = "Thomas Reggi";
+const email = "thomas@reggi.com";
+const phone = "347-878-7829";
+const location = "New York City";
+const downloadable = "/thomas-reggi-resume.pdf";
+const links = [
+  "https://github.com/reggi",
+  "https://linkedin.com/in/thomasreggi",
+  "https://reggi.com"
+].map((link) => ({ text: link.replace('https://', ''), href: link}))
+
+---
+
+<style>
+
+body {
+  @apply print:text-xs
+}
+
+.resume-blue-links a {
+  @apply font-medium text-blue-600 dark:text-blue-500 hover:underline;
+}
+
+.topSection {
+  @apply mb-3 relative;
+}
+
+.name {
+  @apply print:text-2xl text-4xl;
+}
+
+.downloadLink {
+  @apply print:hidden absolute pt-5 top-0 right-0;
+}
+
+.job {
+  @apply flex mb-3;
+}
+
+.jobImage {
+  @apply flex-none pr-3 pt-1;
+}
+
+.jobImage img {
+  @apply rounded-full;
+}
+
+.job h2 {
+  @apply print:text-lg text-xl;
+}
+
+.job h3 {
+  @apply print:text-base inline mr-3 text-lg;
+}
+
+.jobSummary {
+  @apply mb-2;
+}
+
+.label {
+  @apply print:font-normal text-xs font-semibold inline-block px-1 lowercase rounded text-[#5190F7] cursor-default bg-sky-100 last:mr-0 mr-1;
+}
+
+</style>
+
+<div>
+  <div class="topSection flex justify-between items-center">
+    <div>
+      <h1 class="name">{name}</h1>
+      <p>{location} | {email} | {phone}</p>
+      <p>
+        {links.map((link, index) => ( <>
+          <a href={link.href}>{link.text}</a>
+          {index < links.length - 1 && ' | '}
+        </>))}
+      </p>
+    </div>
+    <div class="print:hidden flex gap-1">
+      {expand && (
+        <a href='/resume/full'>
+          <Icon name="arrows-expand-full" alt="white resume" class="w-[40px]"/>
+        </a>
+      )}
+
+      {!expand && (
+        <a href='/resume'>
+          <Icon name="arrows-collapse-full" alt="white resume" class="w-[40px]"/>
+        </a>
+      )}
+
+      <a href={downloadable}>
+        <Icon name="file-download" alt="download resume" class="w-[40px]"/>
+      </a>
+    </div>
+  </div>
+  {jobs.map(job => (
+    <div class="job">
+      <div class="jobImage">
+        <img width="25" height="25" src={job.company.logo}/>
+      </div>
+      <div>
+        <h2>{job.title}</h2>
+        <h3 class="font-bold">{job.company.name}</h3>
+        <span>{job.start}</span> → <span>{job.end ? job.end : "Present"}</span>
+        <p>
+          <job.Content></job.Content>
+        </p>
+        <p>
+          {job.tags.map((tag) => <span class="label">{tag}</span>)}
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
