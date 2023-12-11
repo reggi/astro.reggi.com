@@ -8,12 +8,12 @@ type Props = {
 
 const { expand } = Astro.props
 
-const allJobs = (await getCollection('jobs')).reverse();
+const allJobs = (await getCollection('jobs', () => true))
 
-const jobs = await Promise.all(allJobs.map(async (job) => {
+const jobs = (await Promise.all(allJobs.map(async (job) => {
   const { Content } = await job.render()
   return { ...job.data, tags: (job.data.tags || []), Content }
-}))
+})))
 
 const name = "Thomas Reggi";
 const email = "thomas@reggi.com";

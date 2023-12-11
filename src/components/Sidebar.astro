@@ -39,7 +39,7 @@ const socials = [
     <ul class="text-right list-none">
       <div class="flex flex-row-reverse gap-2">
         {socials.map((link) => ( <>
-          <li><a href={link.href}><Icon name={link.text} alt={link.text} class="h-6"/></a></li>
+          <li><a href={link.href} target="_blank"><Icon name={link.text} alt={link.text} class="h-6"/></a></li>
         </>))}
       </div>
     </ul>
@@ -61,7 +61,7 @@ const socials = [
   <ul class="text-right list-none pb-4 -ml-[10px]">
     <div class="flex flex-row-reverse gap-5">
       {socials.map((link) => ( <>
-        <li><a href={link.href}><Icon name={link.text} alt={link.text} class="h-7"/></a></li>
+        <li><a href={link.href} target="_blank"><Icon name={link.text} alt={link.text} class="h-7"/></a></li>
       </>))}
     </div>
   </ul>
