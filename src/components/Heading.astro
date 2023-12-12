@@ -14,7 +14,7 @@ const id = toKebabCase(text)
 
 <As class="heading items-center" id={id}>
   <a class="flex" href={`#${id}`}>
-    <span class="icon w-0 overflow-hidden">🔗</span>
+    <span class="icon w-0 overflow-hidden" style="transition: width 0.3s;">🔗</span>
     <span>{text}</span>
   </a>
 </As>
@@ -35,7 +35,6 @@ const id = toKebabCase(text)
 
 <style>
   .hovered {
-    width: 40px;
-    transition: transform 0.3s ease;
+    width: 32px;
   }
 </style>
