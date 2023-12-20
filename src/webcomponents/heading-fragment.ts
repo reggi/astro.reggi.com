@@ -32,7 +32,7 @@ class HeadingFragment extends HTMLElement {
     super()
     this.as = this.getAttribute('as') || 'h1'
     this.emoji = this.getAttribute('emoji') || this.defaultEmoji
-    this.emojiWidth = HFrag.elmWidth(this.as, this.emoji)
+    this.emojiWidth = HeadingFragment.elmWidth(this.as, this.emoji)
   }
 
   as: string
@@ -40,7 +40,7 @@ class HeadingFragment extends HTMLElement {
   id: string
   connectedCallback() {
     this.text = this.textContent || ''
-    this.id = HFrag.kabob(this.text)
+    this.id = HeadingFragment.kabob(this.text)
 
     const heading = this.heading
     const anchor = this.anchor
@@ -85,7 +85,6 @@ class HeadingFragment extends HTMLElement {
     e.textContent = this.emoji
     return e
   }
-
 
   get main () {
     const e = document.createElement('span')

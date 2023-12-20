@@ -63,7 +63,7 @@ class FullScreenMedia extends HTMLElement {
     }
   }
 
-  private setStyle(element: HTMLElement, styles: { [key: string]: string }) {
+  private setStyle(element: HTMLElement, styles: Partial<CSSStyleDeclaration>) {
     for (const key in styles) {
       element.style[key as any] = styles[key];
     }
