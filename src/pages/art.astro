@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '@/layouts/Layout.astro';
-import { Embed, cacheFetch } from 'astro-cache-embed';
+import { Embed } from 'astro-cache-embed';
 
 const art = await getCollection('art')
 
@@ -10,8 +10,8 @@ const projects = await Promise.all(art.reverse().map(async project => {
     ...project,
     data: {
       ...project.data,
-      img: project.data.img && project.data.img?.startsWith('http') ? (await cacheFetch(project.data.img)).src : project.data.img,
-      video: project.data.video && project.data.img?.startsWith('http') ? (await cacheFetch(project.data.video)).src : project.data.video,
+      img: project.data.img ,
+      video: project.data.video ,
     }
   }
 }))
@@ -35,14 +35,15 @@ const projects = await Promise.all(art.reverse().map(async project => {
           <div class="pb-10">
             <div class="flex flex-row">
               <div class="mr-3 w-2/5">
-                {piece.data.video && <fullscreen-media><video autoplay muted loop src={piece.data.video} /></fullscreen-media>}
+                {piece.data.video && (
+                  <fullscreen-media>
+                    <Embed {...{autoplay: true, muted: true, loop: true}} src={piece.data.video} />
+                  </fullscreen-media>
+                )}
                 {piece.data.img && (
                   piece.data.href ? (
                     <a href={piece.data.href}>
-                      <Embed
-                        src={piece.data.img}
-                        alt={piece.data.description}
-                      />
+                      <Embed src={piece.data.img} alt={piece.data.description} />
                     </a>
                   ) : (
                     <fullscreen-media>
@@ -50,7 +51,7 @@ const projects = await Promise.all(art.reverse().map(async project => {
                         src={piece.data.img}
                         alt={piece.data.description}
                       />
-                    </fullscreen-media  >
+                    </fullscreen-media>
                   )
                 )}
               </div>

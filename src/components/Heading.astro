@@ -24,10 +24,10 @@ const id = toKebabCase(text)
     const icon = heading.querySelector('.icon')
 
     heading.addEventListener('mouseover', () => {
-      icon.classList.add('hovered');
+      icon && icon.classList.add('hovered');
     });
     heading.addEventListener('mouseout', () => {
-      icon.classList.remove('hovered');
+      icon && icon.classList.remove('hovered');
     });
   });
 </script>

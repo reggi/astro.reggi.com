@@ -4,7 +4,8 @@ export default {
 	content: [
     './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
     './packages/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
-    "./node_modules/astro-cache-embed/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"
+    "./node_modules/astro-cache-embed/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
+    "./node_modules/cache-fetch/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"
   ],
 	theme: {
 		extend: {},

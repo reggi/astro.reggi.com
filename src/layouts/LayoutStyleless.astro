@@ -1,5 +1,5 @@
 ---
-import 'astro-cache-embed/db'
+// import 'astro-cache-embed/db'
 import DarkMode, { type Props as DarkModeProps } from '@/components/DarkMode.astro'
 import Sidebar from '@/components/Sidebar.astro'
 import Hamburger from '@/components/Hamburger.astro'
@@ -60,7 +60,6 @@ const links = [
 	</head>
 	<body>
 
-  
     {hideSidebar ? (
       <div class={`mx-auto max-w-[860px]`}> 
         <main class={className}>
@@ -73,7 +72,7 @@ const links = [
         <div class="pb-5 block md:hidden">
           <Sidebar links={links} landscape/>
         </div>
-        <div class="flex">
+        <div class="flex-inline">
           <div class="w-[155px] hidden md:block fixed">
             <Sidebar links={links}/>
           </div>

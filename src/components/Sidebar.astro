@@ -25,13 +25,20 @@ const socials = [
   { href: "https://reggi.tumblr.com", text: "square-tumblr" },
 ]
 
+const oldAvatar = 'https://cdn.masto.host/indiewebsocial/accounts/avatars/107/567/776/589/757/810/original/52f7729babfc617c.png'
+const avatar = 'https://cdn.masto.host/indiewebsocial/accounts/avatars/107/567/776/589/757/810/original/8a0cedd5fd8b0fee.png'
+
 ---
 
 { portrait && (
   
 <div>
   <a href="/">
-    <Embed class="rounded-full w-full cursor-pointer" src="https://cdn.masto.host/indiewebsocial/accounts/avatars/107/567/776/589/757/810/original/52f7729babfc617c.png" alt="Thomas Reggi's Profile Image"/>
+    <Embed
+      class="rounded-full w-full cursor-pointer"
+      src={avatar}
+      alt="Thomas Reggi's Profile Image"
+    />
   </a>
 
   <div class="pt-5 pr-2">
@@ -58,7 +65,10 @@ const socials = [
 <div class="flex flex-col items-center justify-center">
 
   <a href="/">
-    <Embed class="w-24 h-24 mb-4 rounded-full cursor-pointer" src="https://cdn.masto.host/indiewebsocial/accounts/avatars/107/567/776/589/757/810/original/52f7729babfc617c.png" alt="Thomas Reggi's Profile Image"/>
+    <Embed
+      class="w-24 h-24 mb-4 rounded-full cursor-pointer"
+      src={avatar}
+      alt="Thomas Reggi's Profile Image"/>
   </a>
 
   <p class="text-center pb-4">@thomasreggi 🌸</p>

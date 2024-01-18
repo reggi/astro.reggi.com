@@ -1,0 +1,63 @@
+---
+
+export type Props = {
+  colors: ([string, string] | string)[]
+}
+
+function formatColor (i: ([string, string] | string)[]) {
+  return i.map(v => {
+    if (Array.isArray(v)) {
+      return { name: v[1], value: v[0] }
+    }
+    return { name: v, value: v }
+  })
+}
+
+const colors = formatColor(Astro.props.colors)
+
+const hexToRgb = (hex: string) => {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+};
+
+const luminance = (r: number, g: number, b: number) => {
+  const a = [r, g, b].map((v) => {
+    v /= 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  });
+  return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+};
+
+const isLightColor = (color: string) => {
+  if (color.startsWith('#')) {
+    const rgb = hexToRgb(color);
+    if (rgb) {
+      const lum = luminance(rgb.r, rgb.g, rgb.b)
+      return lum > 0.5;
+    }
+  }
+  // Assume named colors are light
+  return true;
+};
+
+// const textColorBasedOnBackgroundColor = (bgColor: string) => {
+//   if (isLightColor(bgColor)) {
+//     return 'text-black';
+//   }
+//   return 'text-white';
+// };
+
+---
+
+<div class="grid grid-cols-4 gap-4 p-4">
+  {colors.map((color) => (
+    <div class={`flex flex-col items-center justify-center p-4 ${isLightColor(color.value) ? 'bg-black  text-white' : 'bg-white text-black '} rounded shadow`}>
+      <div class={`w-16 h-16 rounded mb-2`} style={{ "background-color": color.value }}></div>
+      <span class="text-sm font-semibold">{color.name}</span>
+    </div>
+  ))}
+</div>

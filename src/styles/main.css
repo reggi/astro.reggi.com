@@ -86,9 +86,14 @@ ol {
   @apply list-decimal;
 }
 
+article > .astro-cache-embed,
+main > .astro-cache-embed {
+  margin-bottom: 1.25rem 
+}
+
 .astro-cache-embed.micro-blog,
 .astro-cache-embed.card:not(.astro-cache-embed.micro-blog .astro-cache-embed.card) {
-  @apply mb-5 bg-white text-slate-700 border-none;
+  @apply  bg-white text-slate-700 border-none;
 
   a {
     @apply dark:text-[#1b5eb5];
