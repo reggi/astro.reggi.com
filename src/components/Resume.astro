@@ -8,7 +8,7 @@ type Props = {
 
 const { expand } = Astro.props
 
-const allJobs = (await getCollection('jobs', () => true))
+const allJobs = await getCollection('jobs')
 
 const jobs = (await Promise.all(allJobs.map(async (job) => {
   const { Content } = await job.render()
