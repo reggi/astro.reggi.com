@@ -3,14 +3,27 @@ import Heading from '@/components/Heading.astro';
 import Layout from '@/layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 const allJobs = (await getCollection('jobs')).reverse();
+const currentJob = allJobs.filter(job => job.data.end === 'Present')[0];
+const oldJobs = allJobs.filter(job => job.data.end !== 'Present');
+const renderJob = (j) => `<a href=${j.data.company.website}>${j.data.company.name} ${j.data.company.emoji}</a>`;
 ---
 
-<Layout title="thomas reggi">
+<Layout title="Thomas Reggi (Tea)" description='New York based Software Enginner'>
   <header>
-    <h1 class="inline">Thomas Reggi</h1> (they/them)
+    <h1 class="inline">Thomas Reggi (Tea)</h1> (they/them)
   </header>
 
-  <p>I'm an Astoria-based software engineer and <a href="/brushwork">artist</a>. I put together a night-time monthly <a href="https://www.meetup.com/astoria-tech-meetup">tech-meetup in Astoria</a>. My work intertwines technology with artistic expression, and outside of it, I delve into yoga, meditation, and spirituality, particularly Buddhism. Driven by socialist values, and I'm exploring worker-owned cooperatives. Aspiring to make a meaningful impact through my engineering skills.</p>
+  <p>I'm an New York based software engineer and <a href="/brushwork">artist</a>. I put together a night-time monthly <a href="https://www.meetup.com/astoria-tech-meetup">tech-meetup in Astoria</a>. My work intertwines technology with artistic expression, and outside of it, I delve into yoga, meditation, and spirituality, particularly Buddhism. Driven by socialist values, and I'm exploring worker-owned cooperatives. Aspiring to make a meaningful impact through my engineering skills.</p>
+
+  <!-- <Heading as="h2">Career Info</Heading> -->
+  <p>
+    I'm passionate about web standards, JavaScript, web components, Node.js, and Deno.
+    I experiment a lot with newer web technologies and frameworks.
+    Currently I work at <Fragment set:html={renderJob(currentJob)}/>!
+    I've worked at a bunch of companies big and small in the past:
+    {oldJobs.map((j, index) => <><Fragment set:html={renderJob(j)}/>{index < oldJobs.length - 1 && ', '}</>)}.
+    Checkout my <a href="https://www.linkedin.com/in/thomasreggi/" target="__blank">linkedin</a> or <a href="/resume">resume</a> for more info.
+  </p>
 
   <Heading as="h2">Links</Heading>
   <ul>
@@ -26,9 +39,12 @@ const allJobs = (await getCollection('jobs')).reverse();
 
   <Heading as="h2">Current</Heading>
   <ul>
-    <li>Watching 🍆 Fleabag  and 🦸 Invincible </li>
-    <li>🎧 Listening to <a href="https://www.youtube.com/watch?v=q3lX2p_Uy9I" target="__blank">Back on 74</a> on 🔁 and <a href="https://www.youtube.com/watch?v=3x2xtPV9oxQ" target="__blank">Record Player</a></a></li>
-    <li>🎭 I recently watched <a href="https://www.google.com/search?q=the+Mask&rlz=1C5CHFA_enUS992US992&oq=the+Mask&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg7MgYIAhBFGDsyBggDEEUYQDIGCAQQRRhBMgYIBRBFGEEyBggGEEUYQTIGCAcQRRg90gEHMjM1ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8" target="__blank">The Mask</a> on <a href="https://indieweb.social/@thomasreggi/111338296488723872" target="__blank">VHS</a></li>
+    <!-- <li>Watching 🍆 Fleabag  and 🦸 Invincible </li> -->
+    <li>Watching ⭐️ Bad Batch and 👴 Curb </li>
+    <!-- <li>🎧 Listening to <a href="https://www.youtube.com/watch?v=q3lX2p_Uy9I" target="__blank">Back on 74</a> on 🔁 and <a href="https://www.youtube.com/watch?v=3x2xtPV9oxQ" target="__blank">Record Player</a></a></li> -->
+    <li>🎧 Listening to <a href="https://www.youtube.com/watch?v=fBjqbgsm61I" target="__blank">Zum Zum</a> and <a href="https://www.youtube.com/watch?v=-YBP-D6vQIA">anything by Caroline Polachek</a></li>
+    <!-- <li>🎭 I recently watched <a href="https://www.google.com/search?q=the+Mask&rlz=1C5CHFA_enUS992US992&oq=the+Mask&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg7MgYIAhBFGDsyBggDEEUYQDIGCAQQRRhBMgYIBRBFGEEyBggGEEUYQTIGCAcQRRg90gEHMjM1ajBqN6gCALACAA&sourceid=chrome&ie=UTF-8" target="__blank">The Mask</a> on <a href="https://indieweb.social/@thomasreggi/111338296488723872" target="__blank">VHS</a></li> -->
+    <li>Recently watched 🦹‍♀️ The Marvels ⚡️</li>
   </ul>
 
   <Heading as="h2">About Me</Heading>
@@ -62,16 +78,7 @@ const allJobs = (await getCollection('jobs')).reverse();
     <li>🃏 Magic The Gathering Night</li>
   </ul>
 
-  <Heading as="h2">Career Info</Heading>
-  <p>
-    I'm passionate about web standards, JavaScript, web components, Node.js, and Deno.
-    I experiment a lot with newer web technologies and frameworks.
-    I've worked at a bunch of companies big and small: 
-    {allJobs.map((j, index) => <><a href={j.data.company.website}>{j.data.company.name} {j.data.company.emoji}</a>{index < allJobs.length - 1 && ', '}</>)}.
-    Checkout my <a href="https://www.linkedin.com/in/thomasreggi/" target="__blank">linkedin</a> or <a href="/resume">resume</a> for more info.
-  </p>
-
-  <ul>
+  <!-- <ul>
     <li>🥞 I am a <strong>Full-Stack JavaScript / TypeScript Developer</strong></li>
     <li>👷 I am looking for a <strong>Senior / Staff</strong> role</li>
     <li>👍🏋️‍♀️🍻⚖️ My top priority in a new role is a <strong>good work-life balance</strong></li>
@@ -88,5 +95,5 @@ const allJobs = (await getCollection('jobs')).reverse();
     <li>I've started my Job Search at the beginning of <strong>January 2023</strong></li>
     <li>I am <strong>open to managing</strong> / leading teams</li>
     <li>I have expierence with eCommerce 🛍 &amp; <a href="https://www.shopify.com/" target="__blank">Shopify</a></li>
-  </ul>
+  </ul> -->
 </Layout>

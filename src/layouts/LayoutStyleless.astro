@@ -16,6 +16,7 @@ export type Props = PrefixType<'theme', DarkModeProps> & {
   disableDarkMode?: boolean
   title: string
   background?: string
+  description?: string
 }
 
 let {
@@ -28,7 +29,8 @@ let {
   hideSidebar,
   disableDarkMode,
   title,
-  background
+  background,
+  description
 } = Astro.props
 
 if (hideAll) {
@@ -50,7 +52,7 @@ const links = [
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="thomas reggi" />
+		{ description && <meta name="description" content={description} />}
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/gif" href="/favicon.gif" />
     <meta name="generator" content={Astro.generator} />
