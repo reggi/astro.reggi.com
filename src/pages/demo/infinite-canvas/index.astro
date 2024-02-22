@@ -1,0 +1,40 @@
+---
+import Layout from '@/layouts/LayoutBoard.astro';
+import { Embed } from 'astro-cache-embed'
+---
+
+<head>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  #resizable { width: 160px; height: 90px; padding: 0.5em; }
+  #resizable h3 { text-align: center; margin: 0; }
+  </style>
+</head>
+
+<script>
+  import '../../../jquery/external/jquery/jquery.js'
+  import '../../../jquery/jquery-ui.js'
+  $(() => {
+    $("main > .astro-cache-embed").resizable();
+    $("main > .astro-cache-embed").draggable({ scroll: true, grid: [ 20, 20 ], stack: "main > .astro-cache-embed" });
+  });
+</script>
+
+<style>
+  body {
+    background-color: #333;
+    background-image: url("/images/sprite-bg-black.png");
+    /* position: relative;
+    overflow-x: hidden; */
+  }
+</style>
+
+<Layout title="pixel-art">
+
+<h1 class="astro-cache-embed inline-block bg-teal-300 border-red-400 rounded-xl px-10 py-2 font-bold text-3xl">My Journey With Sprites</h1>
+<Embed data-name="sprite-girl-center" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ebb3c8b7-44d2-4f3b-bb7b-7e7d3d173112/d2c000v-5f46137f-bc8e-4c41-85b9-93686092a8d8.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2ViYjNjOGI3LTQ0ZDItNGYzYi1iYjdiLTdlN2QzZDE3MzExMlwvZDJjMDAwdi01ZjQ2MTM3Zi1iYzhlLTRjNDEtODViOS05MzY4NjA5MmE4ZDgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.oLX4IFaHfR4vxNUyEqGbHA0OTtBegmcFJ_uixkCMu84" />
+<Embed data-name="sprite-girl" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ebb3c8b7-44d2-4f3b-bb7b-7e7d3d173112/d2c000v-5f46137f-bc8e-4c41-85b9-93686092a8d8.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2ViYjNjOGI3LTQ0ZDItNGYzYi1iYjdiLTdlN2QzZDE3MzExMlwvZDJjMDAwdi01ZjQ2MTM3Zi1iYzhlLTRjNDEtODViOS05MzY4NjA5MmE4ZDgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.oLX4IFaHfR4vxNUyEqGbHA0OTtBegmcFJ_uixkCMu84" />
+<Embed data-name="aesprite-tilemap" src="https://www.aseprite.org/docs/tilemap"/>
+
+</Layout>

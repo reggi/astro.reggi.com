@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-[#fcfaf2];
+  @apply bg-orange-50;
   @apply dark:bg-[#232024];
   @apply dark:text-gray-200;
   @apply md:p-10;
@@ -14,6 +14,28 @@ body {
   @apply text-gray-800;
   @apply text-lg;
 }
+
+a:not(.nostyle) {
+  @apply dark:text-[pink] text-[#1b5eb5];
+}
+
+a:not(.nostyle):hover {
+  @apply dark:text-[#ff69b4] text-[#0569eb];
+}
+
+
+.bg-white {
+  @apply text-gray-800;
+
+  a:not(.nostyle) {
+    @apply text-[#1b5eb5];
+  }
+  
+  a:not(.nostyle):hover {
+    @apply text-[#0569eb];
+  }
+}
+
 
 article >,
 main >,
@@ -70,14 +92,6 @@ pre.astro-code {
   @apply dark:bg-gray-200 dark:text-slate-700;
 }
 
-a:not(.nostyle) {
-  @apply dark:text-[pink] text-[#1b5eb5];
-}
-
-a:not(.nostyle):hover {
-  @apply dark:text-[#ff69b4] text-[#0569eb];
-}
-
 ul, ol {
   @apply list-disc ml-4;
 }
@@ -91,6 +105,23 @@ main > .astro-cache-embed {
   margin-bottom: 1.25rem 
 }
 
+.micro-blog {
+  @apply dark:border-slate-500 border-slate-200 bg-white rounded-lg border
+}
+
+.card {
+  @apply rounded-lg overflow-hidden
+}
+
+.card.no-theme {
+  @apply bg-white
+}
+
+.micro-blog .card.no-theme {
+  @apply bg-slate-300
+}
+
+/* 
 .astro-cache-embed.micro-blog,
 .astro-cache-embed.card:not(.astro-cache-embed.micro-blog .astro-cache-embed.card) {
   @apply  bg-white text-slate-700 border-none;
@@ -102,4 +133,4 @@ main > .astro-cache-embed {
   a:hover {
     @apply dark:text-[#0569eb];
   } 
-}
+} */
