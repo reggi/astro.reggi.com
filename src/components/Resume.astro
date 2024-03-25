@@ -113,7 +113,7 @@ body {
   {jobs.map(job => (
     <div class="job">
       <div class="jobImage">
-        <img width="25" height="25" src={job.company.logo}/>
+        <img width="25" height="25" src={job.company.logo} alt={`logo for ${job.company.logo}`}/>
       </div>
       <div>
         <h2>{job.title}</h2>

@@ -44,18 +44,18 @@ const avatar = "https://avatars.githubusercontent.com/u/296798?v=4"
 
   <div class="pt-5 pr-2">
     <p class="pb-2 text-right">@thomasreggi 🌸</p>
-    <ul class="text-right list-none">
-      <div class="flex flex-row-reverse gap-2">
-        {socials.map((link) => ( <>
-          <li><a href={link.href} target="_blank"><Icon name={link.text} alt={link.text} class="h-6"/></a></li>
-        </>))}
-      </div>
+    <ul class="text-right list-none flex flex-row-reverse gap-2">
+      {socials.map((link) => (
+        <li>
+          <a href={link.href} target="_blank" aria-label={link.text}>
+            <Icon name={link.text} alt={link.text} class="h-6" />
+          </a>
+        </li>
+      ))}
     </ul>
     <div class="mx-0 px-0 mt-[30px] mb-[25px] pl-[20px] border-b-[1px] dark:border-white border-black"></div>
     <ul class="text-right flex flex-col gap-3 list-none">
-      {links.map((link) => ( <>
-        <li><a href={link.href}>{link.text}</a></li>
-      </>))}
+      {links.map((link) => <li><a href={link.href}>{link.text}</a></li>)}
     </ul>
   </div> 
 </div>
@@ -73,13 +73,17 @@ const avatar = "https://avatars.githubusercontent.com/u/296798?v=4"
   </a>
 
   <p class="text-center pb-4">@thomasreggi 🌸</p>
-  <ul class="text-right list-none pb-4 -ml-[10px]">
-    <div class="flex flex-row-reverse gap-5">
-      {socials.map((link) => ( <>
-        <li><a href={link.href} target="_blank"><Icon name={link.text} alt={link.text} class="h-7"/></a></li>
-      </>))}
-    </div>
-  </ul>
+  <div class="text-right list-none pb-4 -ml-[10px]">
+    <ul class="text-right list-none flex flex-row-reverse gap-2">
+      {socials.map((link) => (
+        <li>
+          <a href={link.href} target="_blank" aria-label={link.text}>
+            <Icon name={link.text} alt={link.text} class="h-7" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
 </div>
 
 <div class="p-[30px]">

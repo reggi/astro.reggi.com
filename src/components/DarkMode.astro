@@ -38,7 +38,7 @@ const {
 </style>
 
 {!hidden && (
-<button id="dark-mode">
+<button id="dark-mode" aria-label="Toggle Dark Mode" role="switch" tabindex="0" aria-checked="false">
   <Icon name="sun" id="sun" class="w-[40px]"/>
   <Icon name="moon" id="moon" class="w-[40px]"/>
 </button>
@@ -72,6 +72,9 @@ const {
     element.classList.toggle("dark");
     const isDark = element.classList.contains("dark");
     localStorage.setItem("theme", isDark ? "dark" : "light");
+
+    const darkModeButton = document.getElementById("dark-mode");
+    darkModeButton.setAttribute("aria-checked", isDark ? "true" : "false");
   }
 
   document

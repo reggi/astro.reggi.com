@@ -6,7 +6,7 @@ export const getStaticPaths = devCollectionPosts
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
-<Layout title={entry.data.title} canonical={absoluteSlug(entry)}>
+<Layout title={entry.data.title} canonical={`https://reggi.com/articles/${absoluteSlug(entry)}`} description={entry.data.description}>
   <header>
     <h1>{entry.data.title}</h1>
     <div><a href="/">About</a> / <a href="/articles">Tech Articles</a> </div>

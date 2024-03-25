@@ -71,7 +71,7 @@ pre.astro-code {
 }
 
 a:not(.nostyle) {
-  @apply dark:text-[pink] text-[#1b5eb5];
+  @apply dark:text-[pink] text-[#1b5eb5] font-bold underline;
 }
 
 a:not(.nostyle):hover {

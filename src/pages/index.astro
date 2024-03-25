@@ -1,11 +1,11 @@
 ---
 import Heading from '@/components/Heading.astro';
 import Layout from '@/layouts/Layout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 const allJobs = (await getCollection('jobs')).reverse();
 const currentJob = allJobs.filter(job => job.data.end === 'Present')[0];
 const oldJobs = allJobs.filter(job => job.data.end !== 'Present');
-const renderJob = (j) => `<a href=${j.data.company.website}>${j.data.company.name} ${j.data.company.emoji}</a>`;
+const renderJob = (j: CollectionEntry<'jobs'>) => `<a href=${j.data.company.website}>${j.data.company.name} ${j.data.company.emoji}</a>`;
 ---
 
 <Layout title="Thomas Reggi (Tea)" description='New York based Software Enginner'>

@@ -6,7 +6,7 @@ import Layout from '@/layouts/Layout.astro';
 export type Props = StatementProps & ArtworkProps & { title: string };
 const props = Astro.props
 ---
-<Layout title={props.title}>
+<Layout title={props.title} description={`Daily Brushwork for ${props.title}.`}>
   <Artwork {...props}>
     <Statement {...props}/>
   </Artwork>
